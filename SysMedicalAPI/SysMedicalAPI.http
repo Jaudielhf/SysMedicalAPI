@@ -1,0 +1,6 @@
+@SysMedicalAPI_HostAddress = http://localhost:5100
+
+GET {{SysMedicalAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
