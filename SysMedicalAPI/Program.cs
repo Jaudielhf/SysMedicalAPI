@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using SysMedicalAPI.Data;
+using SysMedicalAPI.DesicionTree;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<TreeDesicionService>();
+
 
 builder.Services.AddCors(options =>
 {
