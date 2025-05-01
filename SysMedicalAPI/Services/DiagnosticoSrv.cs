@@ -14,7 +14,7 @@ namespace SysMedicalAPI.Services
       _context = context;
     }
 
-    public async Task<ResponseVM> GetAllDiagnosticById()
+    public async Task<ResponseVM> GetAllDiagnostic()
     {
       var response = new ResponseVM();
       try
@@ -46,5 +46,28 @@ namespace SysMedicalAPI.Services
       return response; // Ensure a value is returned in all code paths  
     }
 
+
+    public async Task<ResponseVM> GetDiagnostic(long id = -1)
+    {
+      ResponseVM res = new ResponseVM();
+      try
+      {
+        if (id == -1)
+        {
+          var lst = await _context.Diagnosticos.ToListAsync();
+          res.Find(lst?.Count > 0);
+          res.Data = lst;
+        } else
+        {
+          var lst = await _context.Diagnosticos.Where(x => x.Id == id).ToListAsync();
+          res.Find(lst?.Count > 0);
+          res.Data = lst;
+        }
+      } catch (Exception)
+      {
+        res.Error("Erro al obtener los datos");
+      }
+      return res;
+    }
   }
 }

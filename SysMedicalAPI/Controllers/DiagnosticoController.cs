@@ -20,6 +20,15 @@ namespace SysMedicalAPI.Controllers
 
     [HttpGet]
     [Route("Lst")]
-    public async Task<ActionResult<ResponseVM>> Lst() => await diagnosticoSrv.GetAllDiagnosticById();
+    public async Task<ActionResult<ResponseVM>> Lst() => await diagnosticoSrv.GetAllDiagnostic();
+
+    [HttpGet]
+    [Route("Get")]
+    public async Task<ActionResult<ResponseVM>> GetDiagnostic() => await diagnosticoSrv.GetDiagnostic();
+
+    [HttpGet]
+    [Route("Get/{Id}")]
+    public async Task<ActionResult<ResponseVM>> GetDiagnostic(long Id) => await diagnosticoSrv.GetDiagnostic(Id);
+
   }
 }
